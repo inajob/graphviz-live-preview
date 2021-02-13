@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <title>graphviz live preview</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <style>
   * {
     padding: 0px;
@@ -10,17 +13,25 @@
   }
   html,body{
     height:100%;
+    overflow: hidden;
+  }
+  h1#title{
+    height: 1em;
+    line-height:1em;
+    font-size: 1em;
   }
   textarea{
-    width: calc(100% - 2em - 6px);
-    height: calc(50% - 2em - 6px);
+    width: calc(100% - 2em - 2px);
+    height: calc(50% - 2em - 2px - 1em);
+    font-size: 1em;
     line-height:1em;
     padding:1em;
-    border: solid 3px;
+    border: solid 1px;
   }
   #graph{
     background-color: #ddd;
     height:50%;
+    overflow:scroll;
   }
   svg{
     border: solid;
@@ -31,6 +42,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
     <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+    <h1 id="title">Graphviz Live Preview <a href="https://github.com/inajob/graphviz-live-preview">[source]</a> by <a href="https://twitter.com/ina_ani">@ina_ani</a></h1>
     <textarea id="text">
 digraph {
   graph [rankdir=LR]
