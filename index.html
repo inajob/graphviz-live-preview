@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<style>
+  * {
+    padding: 0px;
+    margin: 0px;
+    line-height:0;
+  }
+  html,body{
+    height:100%;
+  }
+  textarea{
+    width: calc(100% - 2em - 6px);
+    height: calc(50% - 2em - 6px);
+    line-height:1em;
+    padding:1em;
+    border: solid 3px;
+  }
+  #graph{
+    background-color: #ddd;
+    height:50%;
+  }
+  svg{
+    border: solid;
+  }
+</style>
+  </head>
+  <body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+    <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+    <textarea id="text">
+digraph {
+  graph [rankdir=LR]
+  Graphviz -> が -> JavaScript -> で -> 使えた
+  "3d-graphviz" -> が -> とても -> 便利
+}
+
+</textarea>
+    <div id="graph" style="text-align: center;"></div>
+    <script>
+    var textElm = document.getElementById("text");
+    text.addEventListener('keyup', () => {draw()})
+    function draw(){
+      d3.select("#graph").graphviz()
+          .renderDot(textElm.value);
+    }
+    draw();
+    </script>
+  </body>
+</html>
